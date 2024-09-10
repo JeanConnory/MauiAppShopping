@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using AppShoppingCenter.Services;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 
 namespace AppShoppingCenter
@@ -14,9 +15,12 @@ namespace AppShoppingCenter
                 .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("OpenSans-Light.ttf", "OpenSansLight");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("OpenSans-Bold.ttf", "OpenSansBold");
                 });
+
+            builder.Services.AddSingleton<StoreService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
