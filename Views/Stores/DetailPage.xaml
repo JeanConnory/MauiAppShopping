@@ -9,16 +9,79 @@
         <vm:DetailPageViewModel />
     </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout>
-            <Image Source="{Binding Establishment.Logo}" />
-            <Image Source="{Binding Establishment.Cover}" />
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Establishment.Name}"
-                VerticalOptions="Center" />
-            <Label Text="{Binding Establishment.Description}" />
-            <Label Text="{Binding Establishment.Localization}" />
-            <Label Text="{Binding Establishment.Phone}" />
-        </VerticalStackLayout>
+        <Grid>
+            <Image Source="{Binding Establishment.Cover}" VerticalOptions="Start" />
+            <Image
+                Margin="20"
+                HorizontalOptions="Start"
+                Source="back.png"
+                VerticalOptions="Start"
+                WidthRequest="32">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapToBackCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Border
+                Margin="0,210,0,0"
+                Background="White"
+                StrokeShape="RoundRectangle 30, 30, 0, 0"
+                StrokeThickness="0">
+                <Grid
+                    Padding="60"
+                    ColumnDefinitions="1*,1*,5*"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+                    <Image
+                        Grid.ColumnSpan="2"
+                        Margin="10,0"
+                        Source="{Binding Establishment.Logo}" />
+                    <Label
+                        Grid.Column="2"
+                        Margin="50,0,0,40"
+                        Style="{StaticResource PrimaryText}"
+                        Text="{Binding Establishment.Name}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        Margin="0,40"
+                        Style="{StaticResource SecondaryText}"
+                        Text="{Binding Establishment.Description}" />
+                    <Image
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Source="pin.png"
+                        WidthRequest="21" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource HeadingText}"
+                        Text="Localização" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource DetailText}"
+                        Text="{Binding Establishment.Localization}" />
+                    <Image
+                        Grid.Row="4"
+                        Grid.RowSpan="2"
+                        Source="phone.png"
+                        WidthRequest="31" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource HeadingText}"
+                        Text="Telefone" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource DetailText}"
+                        Text="{Binding Establishment.Phone}" />
+                </Grid>
+            </Border>
+        </Grid>
     </ScrollView>
 </ContentPage>
