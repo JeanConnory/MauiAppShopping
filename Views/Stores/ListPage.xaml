@@ -23,7 +23,10 @@
                 </Entry.Behaviors>
             </Entry>
         </Border>
-        <CollectionView Grid.Row="1" ItemsSource="{Binding EstablishmentFiltered}">
+        <CollectionView
+            Grid.Row="1"
+            EmptyView="Nenhum registro encontrado"
+            ItemsSource="{Binding EstablishmentFiltered}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid
