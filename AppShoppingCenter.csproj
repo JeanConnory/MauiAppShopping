@@ -71,7 +71,6 @@
 	  <Folder Include="Libraries\Behaviours\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="ViewModels\Authentications\" />
-	  <Folder Include="ViewModels\Cinemas\" />
 	  <Folder Include="ViewModels\Tickets\" />
 	  <Folder Include="ViewModels\Restaurants\" />
 	  <Folder Include="Views\Authentications\" />
@@ -83,6 +82,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\ExplicitStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Cinemas\DetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Cinemas\DetailPageDesktop.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Cinemas\ListPage.xaml">
