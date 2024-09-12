@@ -11,8 +11,8 @@ namespace AppShoppingCenter
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Light.ttf", "OpenSansLight");
@@ -21,6 +21,7 @@ namespace AppShoppingCenter
                 });
 
             builder.Services.AddSingleton<StoreService>();
+            builder.Services.AddSingleton<CinemaService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
