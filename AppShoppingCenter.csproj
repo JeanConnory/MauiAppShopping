@@ -59,7 +59,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
-		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.1.1" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
@@ -69,9 +69,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Libraries\Converters\" />
 	  <Folder Include="Libraries\Behaviours\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="ViewModels\Authentications\" />
+	  <Folder Include="ViewModels\Tickets\" />
 	  <Folder Include="ViewModels\Restaurants\" />
 	  <Folder Include="Views\Authentications\" />
 	</ItemGroup>
