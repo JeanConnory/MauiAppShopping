@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppShoppingCenter.Views.Tickets.PayPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:AppShoppingCenter.Libraries.Converters"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Tickets"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    Title="PayPage">
+    <ContentPage.BindingContext>
+        <vm:PayPageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converters:TimeSpanToTimeStringConverter x:Key="TimeSpanToTimeStringConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Style="{StaticResource HeadingText01}" Text="Pague o seu" />
+                            <Span Text="{x:Static system:Environment.NewLine}" />
+                            <Span Style="{StaticResource HeadingText02}" Text="ESTACIONAMENTO" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Border Padding="20" Style="{StaticResource BorderDotStyle}">
+                <VerticalStackLayout Spacing="4">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Ticket # " />
+                                    <Span Text="{Binding Ticket.TicketNumber}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Style="{StaticResource SecondaryText}" Text="Permanência: " />
+                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket, Converter={StaticResource TimeSpanToTimeStringConverter}}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Style="{StaticResource SecondaryText}" Text="Entrada: " />
+                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateIn, StringFormat='{0:dd/MM/yyyy hh:mm}'}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Style="{StaticResource SecondaryText}" Text="Saída: " />
+                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateOut, StringFormat='{0:dd/MM/yyyy hh:mm}'}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span
+                                        FontFamily="OpenSansBold"
+                                        Style="{StaticResource DetailText}"
+                                        Text="Valor: " />
+                                    <Span
+                                        FontFamily="OpenSansBold"
+                                        Style="{StaticResource DetailText}"
+                                        Text="{Binding Ticket.Price, StringFormat='{0:C}'}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+            <Border Padding="20" Style="{StaticResource BorderDotStyle}">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="PIX" />
+                    <Label Style="{StaticResource SecondaryText}" Text="QR Code" />
+                    <Border MaximumHeightRequest="300" StrokeThickness="0">
+                        <zxing:BarcodeGeneratorView
+                            Margin="3"
+                            ForegroundColor="Black"
+                            Format="QrCode"
+                            Value="{Binding PixCode}" />
+                    </Border>
+                    <Label Style="{StaticResource SecondaryText}" Text="Copie e Cole" />
+                    <Border Style="{StaticResource BorderStyle}">
+                        <Entry IsReadOnly="True" Text="{Binding PixCode}" />
+                    </Border>
+                    <Button
+                        Margin="0,15,0,0"
+                        Command="{Binding CopyAndPasteCommand}"
+                        Style="{StaticResource ButtonStyle}"
+                        Text="Copiar e Colar" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

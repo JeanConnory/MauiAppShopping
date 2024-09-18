@@ -1,11 +1,9 @@
 namespace AppShoppingCenter.Views.Tickets;
 
-public partial class ScamPage : ContentPage
+public partial class PayPage : ContentPage
 {
-	public ScamPage()
+	public PayPage()
 	{
 		InitializeComponent();
-
-		
 	}
 }

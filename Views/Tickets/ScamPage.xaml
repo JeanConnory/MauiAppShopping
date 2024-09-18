@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppShoppingCenter.Views.Tickets.ScamPage"
-             Title="ScamPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="AppShoppingCenter.Views.Tickets.ScamPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maui="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Tickets"
+    Title="ScamPage">
+    <ContentPage.BindingContext>
+        <vm:ScamPageViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Padding="25">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Style="{StaticResource HeadingText01}" Text="Pague o seu" />
+                            <Span Text="{x:Static system:Environment.NewLine}" />
+                            <Span Style="{StaticResource HeadingText02}" Text="ESTACIONAMENTO" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Border Margin="0,50,0,0" Style="{StaticResource BorderStyle}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanCommand}" />
+                </Border.GestureRecognizers>
+                <StackLayout Orientation="Horizontal">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Escanear ticket"
+                        Text="{Binding TicketNumber}">
+                        <Entry.Behaviors>
+                            <maui:EventToCommandBehavior Command="{Binding CheckTicketNumberCommand}" EventName="TextChanged" />
+                            <maui:MaskedBehavior Mask="XXX XXX XXX XXX" />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Image
+                        Margin="0,0,10,0"
+                        Source="camera.png"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Border>
+            <Button
+                Command="{Binding ListCommand}"
+                Style="{StaticResource ButtonStyle}"
+                Text="Tickets pagos"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
