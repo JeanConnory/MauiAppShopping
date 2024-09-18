@@ -1,4 +1,5 @@
 ﻿using AppShoppingCenter.Services;
+using CommunityToolkit.Maui.Core.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,11 +13,11 @@ public partial class ScamPageViewModel : ObservableObject
     [RelayCommand]
     private void Scan()
     {
-        Shell.Current.GoToAsync("pay");
+        Shell.Current.GoToAsync("camera");
     }
 
     [RelayCommand]
-    private void CheckTicketNumber()
+    private async void CheckTicketNumber(Entry entryTicketNumber)
     {
         if (TicketNumber?.Length < 15)
             return;
@@ -26,7 +27,7 @@ public partial class ScamPageViewModel : ObservableObject
 
         if (ticket == null)
         {
-            App.Current.MainPage.DisplayAlert("Ticket não encontrado!", $"Não localizamos o ticket {TicketNumber}", "OK");
+            await App.Current.MainPage.DisplayAlert("Ticket não encontrado!", $"Não localizamos o ticket {TicketNumber}", "OK");
             return;
         }
 
@@ -35,7 +36,8 @@ public partial class ScamPageViewModel : ObservableObject
             { "ticket", ticket }
         };
 
-        Shell.Current.GoToAsync("pay", param);
+        await Shell.Current.GoToAsync("pay", param);
+        await entryTicketNumber.HideKeyboardAsync(CancellationToken.None);
         TicketNumber = string.Empty;
     }
 

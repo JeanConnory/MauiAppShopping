@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Stores"
-    Title="ListPage">
+    Title="">
     <ContentPage.BindingContext>
         <vm:ListPageViewModel x:Name="vm" />
     </ContentPage.BindingContext>
@@ -17,7 +17,13 @@
                     <GradientStop Offset="1.0" Color="#FF0000" />
                 </LinearGradientBrush>
             </Border.Stroke>
-            <Entry Placeholder="Pesquisa por loja" Text="{Binding TextSearch}">
+            <Entry
+                Margin="{OnPlatform Default=0,
+                                    Android='10, 0'}"
+                Placeholder="Pesquisa por loja"
+                SemanticProperties.Hint="Digite para pesquisar o nome da loja"
+                Text="{Binding TextSearch}"
+                VerticalOptions="Center">
                 <Entry.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding TextSearchChangedFilterListCommand}" EventName="TextChanged" />
                 </Entry.Behaviors>
@@ -39,9 +45,11 @@
                         <Image
                             Grid.RowSpan="2"
                             Margin="0,0,15,0"
+                            SemanticProperties.Hint="{Binding Name, StringFormat='Logotipo da loja {0}'}"
                             Source="{Binding Logo}" />
                         <Label
                             Grid.Column="1"
+                            SemanticProperties.HeadingLevel="Level1"
                             Style="{StaticResource PrimaryText}"
                             Text="{Binding Name}" />
                         <Label

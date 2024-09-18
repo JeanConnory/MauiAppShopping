@@ -7,7 +7,7 @@
     xmlns:system="clr-namespace:System;assembly=netstandard"
     xmlns:vm="clr-namespace:AppShoppingCenter.ViewModels.Tickets"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
-    Title="PayPage">
+    Title="">
     <ContentPage.BindingContext>
         <vm:PayPageViewModel />
     </ContentPage.BindingContext>
@@ -16,7 +16,7 @@
     </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout Padding="20">
-            <Label>
+            <Label SemanticProperties.HeadingLevel="Level1">
                 <Label.FormattedText>
                     <FormattedString>
                         <FormattedString.Spans>
@@ -29,7 +29,7 @@
             </Label>
             <Border Padding="20" Style="{StaticResource BorderDotStyle}">
                 <VerticalStackLayout Spacing="4">
-                    <Label>
+                    <Label SemanticProperties.HeadingLevel="Level2">
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
@@ -54,7 +54,7 @@
                             <FormattedString>
                                 <FormattedString.Spans>
                                     <Span Style="{StaticResource SecondaryText}" Text="Entrada: " />
-                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateIn, StringFormat='{0:dd/MM/yyyy hh:mm}'}" />
+                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateIn, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
@@ -64,7 +64,7 @@
                             <FormattedString>
                                 <FormattedString.Spans>
                                     <Span Style="{StaticResource SecondaryText}" Text="Saída: " />
-                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateOut, StringFormat='{0:dd/MM/yyyy hh:mm}'}" />
+                                    <Span Style="{StaticResource SecondaryText}" Text="{Binding Ticket.DateOut, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
@@ -89,22 +89,27 @@
             </Border>
             <Border Padding="20" Style="{StaticResource BorderDotStyle}">
                 <VerticalStackLayout Spacing="4">
-                    <Label Text="PIX" />
+                    <Label SemanticProperties.HeadingLevel="Level2" Text="PIX" />
                     <Label Style="{StaticResource SecondaryText}" Text="QR Code" />
                     <Border MaximumHeightRequest="300" StrokeThickness="0">
                         <zxing:BarcodeGeneratorView
                             Margin="3"
                             ForegroundColor="Black"
                             Format="QrCode"
+                            SemanticProperties.Hint="QRCode de pagamento por Pix"
                             Value="{Binding PixCode}" />
                     </Border>
                     <Label Style="{StaticResource SecondaryText}" Text="Copie e Cole" />
                     <Border Style="{StaticResource BorderStyle}">
-                        <Entry IsReadOnly="True" Text="{Binding PixCode}" />
+                        <Entry
+                            IsReadOnly="True"
+                            SemanticProperties.Hint="Campo contendo o código e Copie e Cole do Pix"
+                            Text="{Binding PixCode}" />
                     </Border>
                     <Button
                         Margin="0,15,0,0"
                         Command="{Binding CopyAndPasteCommand}"
+                        SemanticProperties.Hint="Botão de copiar o código do Pix"
                         Style="{StaticResource ButtonStyle}"
                         Text="Copiar e Colar" />
                 </VerticalStackLayout>

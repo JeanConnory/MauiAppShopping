@@ -1,5 +1,14 @@
-﻿namespace AppShoppingCenter.ViewModels.Tickets;
+﻿using AppShoppingCenter.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
-public partial class ResultPageViewModel
+namespace AppShoppingCenter.ViewModels.Tickets;
+
+[QueryProperty(nameof(Ticket), "ticket")]
+public partial class ResultPageViewModel : ObservableObject
 {
+    [ObservableProperty]
+    private Ticket ticket;
+
+    [ObservableProperty]
+    private int tolerance = 30;
 }

@@ -1,4 +1,5 @@
 ﻿using AppShoppingCenter.Services;
+using AppShoppingCenter.Storages;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using ZXing.Net.Maui.Controls;
@@ -25,6 +26,7 @@ namespace AppShoppingCenter
             builder.Services.AddSingleton<StoreService>();
             builder.Services.AddSingleton<CinemaService>();
             builder.Services.AddSingleton<TicketService>();
+            builder.Services.AddSingleton<TicketPreferenceStorage>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

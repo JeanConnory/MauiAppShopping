@@ -27,11 +27,13 @@ public partial class DetailPage : ContentPage
 		{
             player.Pause();
             btn_playpause.Source = ImageSource.FromFile("play.png");
+            SemanticProperties.SetHint(btn_playpause, "Botão de play do trailer");
         }
 		else
 		{
             player.Play();
             btn_playpause.Source = ImageSource.FromFile("pause.png");
+            SemanticProperties.SetHint(btn_playpause, "Botão de pause do trailer");
         }
     }
 }

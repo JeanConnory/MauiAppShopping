@@ -1,4 +1,5 @@
 ﻿using AppShoppingCenter.Models;
+using AppShoppingCenter.Storages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -29,7 +30,10 @@ public partial class PayPageViewModel : ObservableObject
     {
         await Clipboard.Default.SetTextAsync(PixCode);
 
-        await Task.Delay(30000);
+        await Task.Delay(10000);
+
+        var storage = App.Current.Handler.MauiContext.Services.GetService<TicketPreferenceStorage>();
+        storage.Save(Ticket);
 
         var param = new Dictionary<string, object>
         {

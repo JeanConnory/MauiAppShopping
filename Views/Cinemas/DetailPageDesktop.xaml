@@ -18,6 +18,8 @@
         <media:MediaElement
             x:Name="player"
             Grid.Column="0"
+            SemanticProperties.Description="Player onde é tocado o trailer do filme"
+            SemanticProperties.Hint="Trailer"
             ShouldAutoPlay="False"
             ShouldLoopPlayback="False"
             ShouldShowPlaybackControls="True"
@@ -27,7 +29,8 @@
             x:Name="MovieText"
             Grid.Column="1"
             Padding="50,0"
-            BackgroundColor="White"
+            BackgroundColor="{AppThemeBinding Light=White,
+                                              Dark=Black}"
             StrokeThickness="0">
             <ScrollView>
                 <VerticalStackLayout>
@@ -35,6 +38,7 @@
                         Grid.Column="1"
                         Margin="15"
                         HorizontalOptions="End"
+                        SemanticProperties.Hint="Botão de fechar"
                         Source="close.png"
                         VerticalOptions="Start"
                         WidthRequest="29">
@@ -55,6 +59,7 @@
                         <HorizontalStackLayout Spacing="4">
                             <Image Source="clock.png" WidthRequest="19" />
                             <Label
+                                SemanticProperties.Hint="{Binding Movie.Duration, StringFormat='Duração do filme: {0:hh} horas e {0:mm} minutos'}"
                                 Style="{StaticResource DurationText}"
                                 Text="{Binding Movie.Duration}"
                                 TextColor="Black"
@@ -64,6 +69,7 @@
                     <Label
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
+                        SemanticProperties.HeadingLevel="Level1"
                         Style="{StaticResource PrimaryText}"
                         Text="{Binding Movie.Name}"
                         VerticalOptions="Center" />
