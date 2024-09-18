@@ -6,28 +6,28 @@
     <Style x:Key="PrimaryText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansBold" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="#000000" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light='#000000', Dark='#FFFFFF'}" />
         <Setter Property="TextTransform" Value="Uppercase" />
     </Style>
     <Style x:Key="SecondaryText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansLight" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="TextColor" Value="#A0A0A0" />
+        <Setter Property="TextColor" Value="{StaticResource Gray300}" />
     </Style>
     <Style x:Key="TercearyText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="TextColor" Value="#404040" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light='#404040', Dark={StaticResource Gray300}}" />
     </Style>
     <Style x:Key="HeadingText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansBold" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light='#000000', Dark='#FFFFFF'}" />
     </Style>
     <Style x:Key="DetailText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light='#000000', Dark={StaticResource Gray300}}" />
     </Style>
     <Style x:Key="DurationText" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSansLight" />
@@ -42,7 +42,7 @@
         x:Key="HeadingText01"
         BasedOn="{StaticResource HeadingBase}"
         TargetType="Label">
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
     </Style>
     <Style
         x:Key="HeadingText02"
@@ -51,14 +51,32 @@
         <Setter Property="TextColor" Value="#FF5524" />
     </Style>
 
+    <Style x:Key="SuccessText" TargetType="Label">
+        <Setter Property="TextColor" Value="#1BAB42" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+    <Style x:Key="ToleranceText" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+    </Style>
+
+    <Style x:Key="ToleranceMinutesText" TargetType="Label">
+        <Setter Property="TextColor" Value="#F86237" />
+        <Setter Property="FontSize" Value="48" />
+    </Style>
+
     <Style x:Key="BorderStyle" TargetType="Border">
-        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light=Black, Dark=White}" />
         <Setter Property="StrokeShape" Value="RoundRectangle 5" />
         <Setter Property="StrokeThickness" Value="1" />
     </Style>
 
     <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="#FF5524" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=White, Dark=Black}" />
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="16" />
@@ -66,7 +84,7 @@
     </Style>
 
     <Style x:Key="BorderDotStyle" TargetType="Border">
-        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light=Black, Dark=White}" />
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="StrokeDashArray" Value="3, 3" />
         <Setter Property="Margin" Value="0, 10, 0, 0" />
