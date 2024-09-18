@@ -28,7 +28,7 @@
             Route="cinemas" />
         <ShellContent
             Title="Ticket"
-            ContentTemplate="{DataTemplate tickets:ListPage}"
+            ContentTemplate="{DataTemplate tickets:ScamPage}"
             Icon="ticket.png"
             Route="tickets" />
     </TabBar>
